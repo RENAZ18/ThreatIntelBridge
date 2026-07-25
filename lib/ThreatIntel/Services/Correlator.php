@@ -36,15 +36,18 @@ final class Correlator
             }
 
             // NVD enrichment
-            if (isset($item['severity'])) {
+            if (!empty($item['severity'])) {
                 $events[$cve]->severity = $item['severity'];
             }
-
-            if (isset($item['cvss'])) {
-                $events[$cve]->cvss = $item['cvss'];
+            
+            if (
+                array_key_exists('cvss', $item)
+                && $item['cvss'] !== null
+            ) {
+                $events[$cve]->cvss = (float) $item['cvss'];
             }
-
-            if (isset($item['description'])) {
+            
+            if (!empty($item['description'])) {
                 $events[$cve]->description = $item['description'];
             }
 
