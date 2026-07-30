@@ -1,9 +1,23 @@
-version: '2'
 services:
   rss-bridge:
     image: rssbridge/rss-bridge:latest
     volumes:
+      - ./:/app
       - ./config:/config
     ports:
-      - 3000:80
+      - "3000:80"
+    restart: unless-stopped
+
+  feed-updater:
+    image: curlimages/curl:latest
+    depends_on:
+      - rss-bridge
+    command:
+      - sh
+      - -c
+      - |
+        while true; do
+          curl -s "http://rss-bridge/?action=display&bridge=ThreatIntelBridge&format=Json" > /dev/null
+          sleep 180
+        done
     restart: unless-stopped

@@ -27,7 +27,7 @@ $events = $repository->findAll(
 
 $totalthreats = count($events);
 
-$UrgentCount = 0;
+$urgentCount = 0;
 $highCount = 0;
 $mediumCount = 0;
 $lowCount = 0;

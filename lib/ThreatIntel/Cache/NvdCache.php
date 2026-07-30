@@ -8,7 +8,7 @@ final class NvdCache
 
     public function __construct()
     {
-        $this->dir = __DIR__ . '/../../../../cache/nvd';
+        $this->dir = dirname(__DIR__, 3) . '/cache/nvd';
 
         if (!is_dir($this->dir)) {
             mkdir($this->dir, 0777, true);
