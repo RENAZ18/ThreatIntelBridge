@@ -131,6 +131,8 @@ Priority levels are classified as:
 
 Open Threat Hub is built on top of the RSS-Bridge project.
 
+RSS-Bridge is provided through its Docker image at runtime, so its source code is not bundled with this repository.
+
 RSS-Bridge provides the bridge framework used to fetch data from external sources, while Open Threat Hub extends it with threat intelligence capabilities such as:
 
 - Multi-source aggregation
@@ -150,3 +152,9 @@ Contributions are welcome!
 If you would like to improve Open Threat Hub, please fork the repository, create a feature branch, and submit a pull request.
 
 Please ensure that your changes are well documented and tested before submitting.
+
+## License
+
+Open Threat Hub is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+
+Open Threat Hub uses [RSS-Bridge](https://github.com/RSS-Bridge/rss-bridge) as an external runtime dependency. RSS-Bridge is a separate project distributed under the Unlicense.

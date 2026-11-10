@@ -1,11 +1,15 @@
 services:
   rss-bridge:
     image: rssbridge/rss-bridge:latest
-    volumes:
-      - ./:/app
-      - ./config:/config
     ports:
       - "3000:80"
+    volumes:
+      - ./bridges/ThreatIntelBridge.php:/config/ThreatIntelBridge.php:ro
+      - ./lib/ThreatIntel:/app/lib/ThreatIntel:ro
+      - ./dashboard.php:/app/dashboard.php:ro
+      - ./event.php:/app/event.php:ro
+      - ./data:/app/data
+      - ./cache/nvd:/app/cache/nvd
     restart: unless-stopped
 
   feed-updater:
